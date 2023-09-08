@@ -1,0 +1,247 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0308
+header_name {.h}
+code_name {.cxx}
+class UserInterface {} {
+  Function {analysis_window()} {open
+  } {
+    Fl_Window secondwin {
+      label {Disk Analyzer} open
+      xywh {384 255 415 285} type Double hide size_range {415 295 1000 1000}
+    } {
+      Fl_Menu_Bar menbar {
+        label {Choose Output} open
+        xywh {0 0 245 20}
+      } {
+        Submenu foldermenu {
+          label Folders open
+          xywh {0 0 100 20}
+        } {
+          MenuItem openfold {
+            label {Open New Folder}
+            xywh {0 0 100 20}
+          }
+        }
+        Submenu datamen {
+          label Data open
+          xywh {30 30 100 20}
+        } {
+          MenuItem piech {
+            label {Show Data as Pie Chart}
+            xywh {0 0 100 20}
+          }
+          MenuItem percha {
+            label {Show Data as Percentage}
+            xywh {0 0 100 20}
+          }
+          MenuItem foldtree {
+            label {Show Folder Tree}
+            xywh {0 0 100 20}
+          }
+          MenuItem exten {
+            label {Show Extensions}
+            xywh {0 0 100 20}
+          }
+        }
+        Submenu createmen {
+          label Create open
+          xywh {60 60 100 20}
+        } {
+          MenuItem createdfold {
+            label {Create Folder}
+            xywh {0 0 100 20}
+          }
+          MenuItem createfile {
+            label {Create File}
+            xywh {0 0 100 20}
+          }
+        }
+        Submenu deletemen {
+          label Delete open
+          xywh {70 70 100 20}
+        } {
+          MenuItem deletefold {
+            label {Delete Folder}
+            xywh {0 0 100 20}
+          }
+          MenuItem deletefile {
+            label {Delete File}
+            xywh {0 0 100 20}
+          }
+        }
+      }
+      Fl_Tree maintree {
+        xywh {0 20 130 515}
+      }
+      Fl_Menu_Bar menufilebar {open
+        xywh {130 390 595 145} color 7 selection_color 7 labelcolor 7 textcolor 7
+      } {}
+      Fl_Progress filebar {
+        xywh {165 440 545 25} color 22
+      }
+      Fl_Progress filebar2 {
+        xywh {165 405 545 25} color 22 selection_color 3
+      }
+      Fl_Progress filebar3 {
+        xywh {165 480 545 25} color 22 selection_color 3
+      }
+    }
+    codeblock {} {open after {let mut chart = misc::Chart::new(300,300,600,400,"Pie Chart Representation");
+        chart.set_type(misc::ChartType::Pie);
+        chart.set_bounds(0.0, 1.0);
+        chart.set_text_size(18);
+        chart.set_color(enums::Color::White);}
+    } {}
+  }
+  decl {use fltk::misc::Chart;} {public local
+  }
+}
+
+class UserInterface2 {open
+} {
+  Function {entry_window()} {open
+  } {
+    Fl_Window mainwin {
+      label {Disk Analyzer} open
+      xywh {74 64 725 535} type Double box THIN_DOWN_BOX color 39 labelsize 26 hide
+    } {
+      Fl_Button analyze {
+        label {Analyze Folder}
+        xywh {280 315 140 25} box GLEAM_ROUND_UP_BOX down_box GLEAM_UP_FRAME color 92 labelfont 13 labelcolor 39
+      }
+      Fl_File_Input foldin {
+        label {Enter Folder   @fileopen}
+        xywh {260 235 355 35} box ROUND_UP_BOX selection_color 132 labelfont 13 labelcolor 92 textcolor 39
+      }
+      Fl_Text_Display {} {
+        label {Rust Disk Analyzer}
+        xywh {295 75 125 75} box NO_BOX color 39 labelfont 13 labelsize 38 labelcolor 92
+      }
+    }
+  }
+}
+
+class UserInterface3 {} {
+  Function {second_window()} {open
+  } {
+    Fl_Window secondwin {
+      label Analysis open
+      xywh {74 64 726 536} type Double color 39 labelfont 13 labelsize 28 visible
+    } {
+      Fl_Tree maintree {
+        xywh {-5 20 190 520} box PLASTIC_UP_BOX color 32 labelfont 13
+      }
+      Fl_Menu_Button create {
+        label Create
+        xywh {90 0 95 20} box GLEAM_UP_BOX color 92 textfont 13
+      } {
+        MenuItem createdfold {
+          label {Create a Directory}
+          xywh {15 15 100 20} divider
+        }
+      }
+      Fl_Menu_Button delete {
+        label Delete
+        xywh {180 0 95 20} box GLEAM_UP_BOX color 92 textfont 13
+      } {
+        MenuItem deletefold {
+          label {Delete a Directory}
+          xywh {15 15 100 20}
+        }
+      }
+      Fl_Menu_Button showpie {
+        label {Pie Chart}
+        xywh {0 0 95 20} box GLEAM_UP_BOX color 92 textfont 13
+      } {
+        MenuItem piech {
+          label {Show Data as Pie Chart}
+          xywh {15 15 100 20} divider
+        }
+      }
+      Fl_Button extinbut {
+        label Search
+        xywh {385 245 70 20} hide
+      }
+      Fl_Input extin {
+        label {Enter Extension:}
+        xywh {380 195 215 25} hide
+      }
+      Fl_File_Input newfoldername {
+        label {Enter Folder name}
+        xywh {400 165 310 35} hide
+      }
+      Fl_Menu_Button showbar {
+        label Bars open
+        xywh {270 0 95 20} box GLEAM_UP_BOX color 92 textfont 13
+      } {
+        MenuItem bar {
+          label {Show Data as Percentage Bar}
+          xywh {25 25 100 20} divider
+        }
+      }
+      Fl_Menu_Button exten {
+        label Extensions
+        xywh {360 0 100 20} box GLEAM_UP_BOX color 92 textfont 13
+      } {
+        MenuItem exten {
+          label {Search by Extension}
+          xywh {35 35 100 20} divider
+        }
+      }
+      Fl_Scroll filegroup {
+        label {                                             Directories                  Directory Size} open
+        xywh {185 40 540 495} box GLEAM_ROUND_UP_BOX color 39 selection_color 92 labelfont 13 labelcolor 92
+      } {}
+    }
+  }
+}
+
+class UserInterface4 {open
+} {
+  Function {create_window()} {open
+  } {
+    Fl_Window createwin {
+      label {Create File-Folder} open
+      xywh {74 64 726 536} type Double box ROUNDED_BOX color 39 labelfont 13 hide
+    } {
+      Fl_Input createfile {
+        label {Enter File Name @filenew}
+        xywh {225 265 400 25} box ROUND_UP_BOX labeltype SHADOW_LABEL labelfont 13 labelcolor 92
+      }
+      Fl_Button createbut {
+        label Create
+        xywh {290 325 140 25} box GLEAM_ROUND_UP_BOX down_box GLEAM_UP_FRAME color 92 labelfont 13 labelcolor 39
+      }
+      Fl_Input createfold {
+        label {Enter Folder Name @filenew}
+        xywh {225 230 400 25} box ROUND_UP_BOX labeltype SHADOW_LABEL labelfont 13 labelcolor 92
+      }
+      Fl_Output createout {
+        xywh {275 195 170 25} box NO_BOX color 39 selection_color 39 labelfont 13 labelcolor 92 textfont 13 textcolor 92
+      }
+    }
+  }
+}
+
+class UserInterface5 {open selected
+} {
+  Function {delete_window()} {open
+  } {
+    Fl_Window deletewin {
+      label {Delete File-Folder} open
+      xywh {74 64 726 536} type Double box ROUNDED_BOX color 39 labelfont 13 hide
+    } {
+      Fl_Input delettefile {
+        label {Enter Directory Name @filenew}
+        xywh {225 265 400 25} box ROUND_UP_BOX labeltype SHADOW_LABEL labelfont 13 labelcolor 92
+      }
+      Fl_Button deletebut {
+        label Delete
+        xywh {290 325 140 25} box GLEAM_ROUND_UP_BOX down_box GLEAM_UP_FRAME color 92 labelfont 13 labelcolor 39
+      }
+      Fl_Output deleteout {
+        xywh {275 195 170 25} box NO_BOX color 39 selection_color 39 labelfont 13 labelcolor 92 textfont 13 textcolor 92
+      }
+    }
+  }
+}
